@@ -7,9 +7,28 @@ TeamxSpace solving today's challenges with tomorrow's vision.Hackathon 2025
 ## 🌐 Deployed Link
 [Visit our live project](https://paridhijain-28.github.io/TeamxSpace-Hub/)
 
-![GitHub stars](https://img.shields.io/github/stars/username/repo?style=flat-square)
-![License](https://img.shields.io/github/license/username/repo)
-
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Black Background Website</title>
+  <style>
+    body {
+      background-color: black; /* Background is black */
+      color: white;            /* Text is white */
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    a {
+      color: #1E90FF; /* Links in blue */
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to My Black-Themed Website 🌙</h1>
+  <p>This is my cool GitHub Pages site with a dark background.</p>
+</body>
+</html>
 
 
 
