@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Sunny — The Solar Flare's Adventure!</title>
+  <meta name="description" content="A children's storysite explaining space weather and its impacts by Team xSpace.">
+  <style>
+    :root{
+      --accent1:#ff6a45;
+      --accent2:#0088ff;
+      --card:#1e293b;
+      --card-text:#f1f5f9;
+      --muted:#cbd5e1;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;
+      background:#111;
+      color:var(--card-text);
+      overflow-x:hidden;
+    }
+
+    /* Splash animation */
+    #splash {
+      position:fixed;
+      top:0;left:0;right:0;bottom:0;
+      background:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      z-index:9999;
+      animation:fadeOut 1s ease forwards;
+      animation-delay:4s;
+    }
+    #splash .sun {
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, var(--accent2), var(--accent1));
+      animation:pulse 2s infinite;
+    }
+    #splash h1 {
+      margin-top:20px;
+      font-size:1.5rem;
+      color:white;
+      text-align:center;
+      animation:fadeIn 2s ease;
+    }
+    @keyframes pulse {
+      0%,100% { transform:scale(1); box-shadow:0 0 20px #ff6a45;}
+      50% { transform:scale(1.2); box-shadow:0 0 50px #0088ff;}
+    }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes fadeOut { to{opacity:0; visibility:hidden;} }
+
+    /* Bouncing balls background */
+    .ball{position:absolute;border-radius:50%;opacity:0.8;animation:move 12s linear infinite;z-index:0;}
+    .ball:nth-child(1){width:120px;height:120px;background:#ff6a45;top:10%;left:15%;animation-duration:14s;}
+    .ball:nth-child(2){width:80px;height:80px;background:#0088ff;top:40%;left:60%;animation-duration:12s;}
+    .ball:nth-child(3){width:100px;height:100px;background:#00ffcc;top:70%;left:30%;animation-duration:16s;}
+    .ball:nth-child(4){width:60px;height:60px;background:#ffd700;top:20%;left:80%;animation-duration:18s;}
+    .ball:nth-child(5){width:90px;height:90px;background:#ff00ff;top:60%;left:10%;animation-duration:20s;}
+    @keyframes move{
+      0%{transform:translateY(0) translateX(0);}
+      25%{transform:translateY(-100px) translateX(50px);}
+      50%{transform:translateY(100px) translateX(-50px);}
+      75%{transform:translateY(-80px) translateX(80px);}
+      100%{transform:translateY(0) translateX(0);}
+    }
+
+    .container{position:relative;z-index:2;max-width:980px;margin:0 auto;padding:16px;backdrop-filter:blur(6px)}
+    header{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .logo{display:flex;align-items:center;gap:10px;flex:1}
+    .logo .sun{width:48px;height:48px;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--accent2),var(--accent1));display:grid;place-items:center;font-weight:700;color:#fff}
+    h1{font-size:1.4rem;margin:0;color:var(--accent2)}
+    p.lead{color:var(--muted);margin:4px 0 12px}
+    nav{display:flex;flex-wrap:wrap;gap:10px;margin-left:auto}
+    nav a{color:var(--accent1);text-decoration:none;font-weight:600;font-size:0.95rem}
+    .hero{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;margin-top:16px}
+    .card{background:var(--card);border-radius:14px;padding:16px;box-shadow:0 6px 20px rgba(0,0,0,0.5);transition:transform 0.25s, box-shadow 0.25s}
+    .card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,0.7)}
+    .hero .intro h2{margin:0 0 6px;font-size:1.3rem;color:var(--accent1)}
+    .cta{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;text-decoration:none;font-weight:700}
+    section{margin-top:18px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .fact{padding:12px;border-radius:12px;background:linear-gradient(180deg,#1e293b,#0f172a);border:1px solid rgba(255,255,255,0.1)}
+    .team-list{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{background:#0f172a;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.2);font-size:0.9rem;color:var(--accent2)}
+    .quiz{display:block;margin-top:10px}
+    .quiz button{margin-top:8px;padding:8px 10px;border-radius:8px;border:0;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:white;font-size:0.9rem;cursor:pointer}
+    footer{margin:24px 0 40px;color:var(--muted);font-size:0.85rem}
+    @media (min-width:700px){.hero{grid-template-columns:1fr 320px}}
+  </style>
+</head>
+<body>
+  <!-- Splash Animation -->
+  <div id="splash">
+    <div class="sun"></div>
+    <h1>Sunny — The Solar Flare’s Adventure! BY TEAMxSPACE</h1>
+  </div>
+
+  <!-- Bouncing balls background -->
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="sun">☀</div>
+        <div>
+          <h1>Sunny — The Solar Flare’s Adventure!</h1>
+          <div class="lead">A digital children's story explaining space weather and its impact — by Team xSpace</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#story">Story</a>
+        <a href="#future">Future</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="card intro">
+        <h2>Turn science into stories</h2>
+        <p class="lead">Sunny is a character-driven story that teaches kids about solar flares, CMEs, and the effects of space weather on Earth. Simple language, colorful visuals and real NASA data bring learning to life.</p>
+        <a class="cta" href="#story">Read the Story</a>
+
+        <section id="about" class="card">
+          <h3 style="color:var(--accent2)">About Team xSpace</h3>
+          <p>We are a student-led team building edutainment: science explained through characters and animation. Our approach is research-backed and child-friendly.</p>
+          <div class="team-list">
+            <div class="chip">Yashwardhan Dhimole — Visualizer & Developer</div>
+            <div class="chip">Vishisht Jain — Planner</div>
+            <div class="chip">Yatharth Mishra — Supporter</div>
+            <div class="chip">Paridhi Jain — Leader</div>
+            <div class="chip">Ashita Patel — Analyst</div>
+            <div class="chip">Ishita Chugwani — Researcher</div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="card">
+        <h3 style="color:var(--accent2)">Quick Facts</h3>
+        <div class="grid">
+          <div class="fact"><strong style="color:var(--accent1)">Solar Flares</strong><div class="muted">Sudden bursts of radiation from the Sun's surface.</div></div>
+          <div class="fact"><strong style="color:var(--accent1)">Coronal Mass Ejections</strong><div class="muted">Huge clouds of solar plasma that can interfere with Earth's systems.</div></div>
+          <div class="fact"><strong style="color:var(--accent1)">Solar Wind</strong><div class="muted">Continuous stream of charged particles from the Sun.</div></div>
+        </div>
+        <hr style="margin:10px 0;border:none;border-top:1px solid rgba(255,255,255,0.2)">
+        <div style="font-size:0.9rem">Interactive: <a href="#quiz" style="color:var(--accent2)">Take a short quiz</a></div>
+      </aside>
+    </div>
+
+    <section id="story" class="card">
+      <h2 style="color:var(--accent2)">Story Concept</h2>
+      <p>Sunny — a cheerful solar flare — travels through space and meets people affected by its journey: farmers, pilots and astronauts. The narrative shows how space weather can affect GPS, communications, power systems and the safety of space travelers.</p>
+      <h3 style="color:var(--accent1)">Story features</h3>
+      <ul>
+        <li>Told from the solar flare's perspective.</li>
+        <li>Simple, child-friendly language with colorful illustration ideas.</li>
+        <li>Incorporates fun facts and real-world scenarios to spark curiosity.</li>
+        <li>Encourages empathy, safety awareness and interest in space science.</li>
+      </ul>
+      <h3 style="color:var(--accent1)">How we create it</h3>
+      <ol>
+        <li>Research NASA data and space weather basics.</li>
+        <li>Storyboard key scenes and educational beats.</li>
+        <li>Design characters, animate scenes and assemble an interactive web app or video.</li>
+      </ol>
+    </section>
+
+    <!-- Removed space weather section -->
+
+    <section id="method" class="card">
+      <h2 style="color:var(--accent2)">Methodology & Innovation</h2>
+      <p>We combine factual research with creative storytelling to make complex ideas accessible and memorable for kids.</p>
+      <ul>
+        <li>Character-driven explanations (Sun, Earth, Astronauts speak).</li>
+        <li>Edutainment approach: learning through play and narrative.</li>
+        <li>Scalable content that can expand to languages and interactive modes.</li>
+      </ul>
+    </section>
+
+    <section id="future" class="card">
+      <h2 style="color:var(--accent2)">Future Scope</h2>
+      <p>Planned features to expand reach and engagement:</p>
+      <ul>
+        <li>Multilingual support for global classrooms.</li>
+        <li>Gamified missions, quizzes and badges to motivate learning.</li>
+        <li>VR/AR experiences for immersive classroom exhibits.</li>
+        <li>Additional stories: auroras, geomagnetic storms and satellite safety.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 id="quiz" style="color:var(--accent2)">Mini Quiz — Test what you learned</h2>
+      <div class="quiz">
+        <div id="q-area">
+          <div class="question">1) What is a solar flare?</div>
+          <label><input type="radio" name="q1" value="a"> A) A type of comet</label><br>
+          <label><input type="radio" name="q1" value="b"> B) A sudden burst of radiation from the Sun</label><br>
+          <label><input type="radio" name="q1" value="c"> C) A cloud on Earth</label>
+        </div>
+        <button onclick="checkAnswers()">Submit Answers</button>
+        <div id="result" style="margin-top:10px;font-weight:700"></div>
+      </div>
+    </section>
+
+    <!-- New Fun Facts Section -->
+    <section id="funfacts" class="card">
+      <h2 style="color:var(--accent2)">Fun Facts about the Sun</h2>
+      <div class="grid" style="margin-top:10px">
+        <div class="fact">
+          <strong style="color:var(--accent1)">Big but Light</strong>
+          <div class="muted">The Sun makes up 99.8% of our solar system’s mass — yet if it were hollow, over 1 million Earths could fit inside!</div>
+        </div>
+        <div class="fact">
+          <strong style="color:var(--accent1)">Not Yellow?</strong>
+          <div class="muted">Even though we see it as yellow or orange, the Sun is actually white — Earth’s atmosphere makes it look warmer in color.</div>
+        </div>
+        <div class="fact">
+          <strong style="color:var(--accent1)">Fast Rotator</strong>
+          <div class="muted">The Sun spins! Near its equator, it completes one rotation in about 25 days.</div>
+        </div>
+        <div class="fact">
+          <strong style="color:var(--accent1)">Powerful Energy</strong>
+          <div class="muted">Every second, the Sun releases more energy than humanity has used in all of history!</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="card" style="padding:10px">
+        <strong style="color:var(--accent1)">Team xSpace</strong> — Turning space science into stories.
+        <div style="margin-top:6px">Contact: <a href="#" style="color:var(--accent2)">teamxspace@example.com</a></div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Quiz sounds -->
+  <audio id="correctSound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" preload="auto"></audio>
+  <audio id="wrongSound" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" preload="auto"></audio>
+
+<!-- 📹 Video Section -->
+<section class="card">
+  <h2 style="color:var(--accent2)">Watch Our Video</h2>
+  <p>
+    🎬 Click here to watch: 
+    <a href="https://drive.google.com/file/d/1Xj_PJBR9oaTXqTsrv5oLLDxYxdQcg63W/view" 
+       target="_blank" 
+       style="color:var(--accent1);font-weight:600;text-decoration:underline">
+       Watch on Google Drive
+    </a>
+  </p>
+</section>
+
+  
+  <script>
+    function checkAnswers(){
+      let score=0;
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const result=document.getElementById('result');
+      const correctSound=document.getElementById('correctSound');
+      const wrongSound=document.getElementById('wrongSound');
+
+      if(q1 && q1.value==='b'){
+        score+=1;
+        correctSound.play();
+        result.textContent = '✅ Correct! You scored ' + score + ' / 1';
+      } else {
+        wrongSound.play();
+        result.textContent = '❌ Oops! Try again.';
+      }
+    }
+  </script>
+</body>
+</html>
